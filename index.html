@@ -7,7 +7,29 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="p-4">
+      <div class="grid grid-cols-12 gap-x-4">
+        <div class="col-span-4">
+          <img
+            data-recursive-effect
+            class="w-full object-contain invisible"
+            src="/i1.webp"
+            alt=""
+          />
+        </div>
+        <!-- <div class="col-span-4 ">
+          <video
+            data-recursive-effect
+            class="w-full object-contain"
+            src="/flower.mp4"
+            autoplay
+            muted
+            playsinline
+            loop
+          >
+        </div> -->
+      </div>
+    </div>
     <canvas id="webgl"></canvas>
     <script type="module" src="/src/main.ts"></script>
   </body>

@@ -6,8 +6,9 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "types": [
+      "vite/client",
       "vite-plugin-glsl/ext"
-    ],    
+    ],
 
     /* Bundler mode */
     "moduleResolution": "bundler",

@@ -1,6 +1,6 @@
-import './style.css'
-import Canvas from './canvas'
-import Debug from './debug'
+import "./style.css"
+import Canvas from "./canvas"
+import Debug from "./debug"
 
 class App {
   canvas: Canvas

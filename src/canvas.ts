@@ -4,6 +4,7 @@ import GUI from "lil-gui"
 
 import vertexShader from "./shaders/vertex.glsl"
 import fragmentShader from "./shaders/fragment.glsl"
+import RucursiveQuadtree from "./recursive-quadtree-effect"
 
 export default class Canvas {
   element: HTMLCanvasElement
@@ -22,7 +23,7 @@ export default class Canvas {
     this.setSizes()
     this.addEventListeners()
     this.createDebug()
-    this.createDebugMesh()
+    this.createRecursiveMedia()
     this.render()
   }
 
@@ -62,6 +63,20 @@ export default class Canvas {
     this.debug = new GUI()
   }
 
+  createRecursiveMedia() {
+    const elements = [
+      ...document.querySelectorAll("[data-recursive-effect]"),
+    ] as HTMLElement[]
+    elements.forEach((element) => {
+      const recursiveMedia = new RucursiveQuadtree({
+        scene: this.scene,
+        element,
+        sizes: this.sizes,
+        debug: this.debug,
+      })
+    })
+  }
+
   setSizes() {
     let fov = this.camera.fov * (Math.PI / 180)
     let height = this.camera.position.z * Math.tan(fov / 2) * 2
@@ -90,15 +105,6 @@ export default class Canvas {
 
     this.renderer.setPixelRatio(this.dimensions.pixelRatio)
     this.renderer.setSize(this.dimensions.width, this.dimensions.height)
-  }
-
-  createDebugMesh() {
-    const mesh = new THREE.Mesh(
-      new THREE.PlaneGeometry(5, 5),
-      new THREE.ShaderMaterial({ vertexShader, fragmentShader }),
-    )
-
-    this.scene.add(mesh)
   }
 
   render() {
