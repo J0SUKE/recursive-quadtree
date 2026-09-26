@@ -7,19 +7,30 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app" class="p-4">
-      <div class="grid grid-cols-12 gap-x-4">
+    <div id="app">
+      <div class="w-full">
+        <img
+            data-recursive-effect
+            data-max-depth="12"
+            data-duration="8"
+            class="w-full object-contain"
+            src="/landscape.jpg"
+            alt=""
+          />
+      </div>
+      <div class="grid grid-cols-12 gap-x-4 gap-y-16 p-4">
         <div class="col-span-4">
           <img
             data-recursive-effect
-            class="w-full object-contain invisible"
+            class="w-full object-contain"
             src="/i1.webp"
             alt=""
           />
         </div>
-        <!-- <div class="col-span-4 ">
+        <div class="col-span-4 col-start-6 row-start-2">
           <video
             data-recursive-effect
+            data-max-depth="7"
             class="w-full object-contain"
             src="/flower.mp4"
             autoplay
@@ -27,7 +38,7 @@
             playsinline
             loop
           >
-        </div> -->
+        </div>
       </div>
     </div>
     <canvas id="webgl"></canvas>

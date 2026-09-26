@@ -2,8 +2,6 @@ import * as THREE from "three"
 import { Dimensions, Size } from "./types/types"
 import GUI from "lil-gui"
 
-import vertexShader from "./shaders/vertex.glsl"
-import fragmentShader from "./shaders/fragment.glsl"
 import RucursiveQuadtree from "./recursive-quadtree-effect"
 
 export default class Canvas {
@@ -14,6 +12,7 @@ export default class Canvas {
   sizes: Size
   dimensions: Dimensions
   debug: GUI
+  recursiveMedias: RucursiveQuadtree[] = []
 
   constructor() {
     this.element = document.getElementById("webgl") as HTMLCanvasElement
@@ -21,8 +20,6 @@ export default class Canvas {
     this.createCamera()
     this.createRenderer()
     this.setSizes()
-    this.addEventListeners()
-    this.createDebug()
     this.createRecursiveMedia()
     this.render()
   }
@@ -59,22 +56,24 @@ export default class Canvas {
     this.renderer.setPixelRatio(this.dimensions.pixelRatio)
   }
 
-  createDebug() {
-    this.debug = new GUI()
+  updateScroll(scroll: number) {
+    this.recursiveMedias.forEach((media) => media.updateScroll(scroll))
   }
 
   createRecursiveMedia() {
     const elements = [
       ...document.querySelectorAll("[data-recursive-effect]"),
     ] as HTMLElement[]
-    elements.forEach((element) => {
-      const recursiveMedia = new RucursiveQuadtree({
-        scene: this.scene,
-        element,
-        sizes: this.sizes,
-        debug: this.debug,
-      })
-    })
+    this.recursiveMedias = elements.map(
+      (element) =>
+        new RucursiveQuadtree({
+          scene: this.scene,
+          element,
+          sizes: this.sizes,
+          renderer: this.renderer,
+          debug: this.debug,
+        }),
+    )
   }
 
   setSizes() {
@@ -86,10 +85,6 @@ export default class Canvas {
       width: width,
       height: height,
     }
-  }
-
-  addEventListeners() {
-    window.addEventListener("resize", this.onResize.bind(this))
   }
 
   onResize() {
@@ -105,9 +100,12 @@ export default class Canvas {
 
     this.renderer.setPixelRatio(this.dimensions.pixelRatio)
     this.renderer.setSize(this.dimensions.width, this.dimensions.height)
+
+    this.recursiveMedias.forEach((media) => media.onResize(this.sizes))
   }
 
   render() {
+    this.recursiveMedias.forEach((media) => media.update())
     this.renderer.render(this.scene, this.camera)
   }
 }
