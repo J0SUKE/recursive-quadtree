@@ -1,0 +1,56 @@
+{
+  "hash": "954fef2c",
+  "configHash": "6fa8b7c6",
+  "lockfileHash": "9fd480d5",
+  "browserHash": "f4f35e9c",
+  "optimized": {
+    "gsap": {
+      "src": "../../../node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "2abc7aff",
+      "needsInterop": false
+    },
+    "gsap/ScrollTrigger": {
+      "src": "../../../node_modules/gsap/ScrollTrigger.js",
+      "file": "gsap_ScrollTrigger.js",
+      "fileHash": "614770dd",
+      "needsInterop": false
+    },
+    "lenis": {
+      "src": "../../../node_modules/lenis/dist/lenis.mjs",
+      "file": "lenis.js",
+      "fileHash": "d69b85cc",
+      "needsInterop": false
+    },
+    "lil-gui": {
+      "src": "../../../node_modules/lil-gui/dist/lil-gui.esm.js",
+      "file": "lil-gui.js",
+      "fileHash": "6a38fbea",
+      "needsInterop": false
+    },
+    "three": {
+      "src": "../../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "4eb9058c",
+      "needsInterop": false
+    },
+    "troika-three-text": {
+      "src": "../../../node_modules/troika-three-text/dist/troika-three-text.esm.js",
+      "file": "troika-three-text.js",
+      "fileHash": "0e800f62",
+      "needsInterop": false
+    },
+    "troika-three-utils": {
+      "src": "../../../node_modules/troika-three-utils/dist/troika-three-utils.esm.js",
+      "file": "troika-three-utils.js",
+      "fileHash": "bda4b533",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "three.module-Bj7iJlUn": {
+      "file": "three.module-Bj7iJlUn.js",
+      "isDynamicEntry": false
+    }
+  }
+}

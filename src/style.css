@@ -1,19 +1,80 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Neue Haas Grotesk Display";
+  src: url("/fonts/NeueHaasGroteskDisplay/NeueHaasGrotDisp-55Roman-Trial.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Haas Grotesk Display";
+  src: url("/fonts/NeueHaasGroteskDisplay/NeueHaasGrotDisp-65Medium-Trial.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url("/fonts/NeueHaasGroteskText/NeueHaasGrotText-55Roman-Trial.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Haas Grotesk Text";
+  src: url("/fonts/NeueHaasGroteskText/NeueHaasGrotText-65Medium-Trial.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "Neue Haas Grotesk Display", sans-serif;
+  --font-text: "Neue Haas Grotesk Text", sans-serif;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
 
 body {
   overflow-x: hidden;
+  font-family: var(--font-text);
 }
+
+/* *::selection {
+  background: black;
+  color: white;
+} */
 
 #webgl {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  z-index: 0;
+}
+#app {
+  position: relative;
+  z-index: 10;
 }
 
 [data-recursive-effect] {
   opacity: 0;
 }
+
+/* glyphs are drawn in WebGL, the DOM text only drives layout */
+[data-webgl-text] {
+  color: transparent;
+}
+
+/* [data-webgl-text]*::selection {
+  color: white;
+} */
